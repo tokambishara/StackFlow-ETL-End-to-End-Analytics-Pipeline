@@ -1,4 +1,4 @@
-# **StackPipeline: End-to-End Stack Exchange Analytics**
+# StackPipeline: End-to-End Stack Exchange Analytics
 
 ## **Overview**  
 StackPipeline is an **end-to-end data engineering project** that extracts, processes, and analyzes Stack Exchange data using **Apache Spark, HDFS, and a Data Warehouse (DWH)** before visualizing insights in **Power BI**. The project demonstrates efficient **data processing, storage, and analytics** for large-scale datasets.
