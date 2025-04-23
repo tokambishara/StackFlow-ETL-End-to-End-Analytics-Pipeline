@@ -25,7 +25,6 @@ This project implements an **end-to-end data lakehouse** following the **Bronze 
 
 ## 🧪 Exploratory Data Analysis
 
-![EDA](DataModel/schema_diagrams/eda.png)
 
 - Performed EDA on raw XML datasets using **Python**, **Pandas**, and **Seaborn**  
 - Identified data quality issues, distributions, and key patterns  
