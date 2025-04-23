@@ -85,7 +85,7 @@ Key visuals include:
 - **User Contribution** vs. **Acceptance Rate**
 
 Explore the full `.pbix` in [`Insights`](Insights).
-The kub if the publish[Power BI Puplish](https://app.powerbi.com/groups/me/reports/f3e1e1c6-580c-4a27-b699-e31e4db28a55/05a4b39b2712cab9a9f4?experience=power-bi)
+Power BI publish[Power BI Puplish](https://app.powerbi.com/groups/me/reports/f3e1e1c6-580c-4a27-b699-e31e4db28a55/05a4b39b2712cab9a9f4?experience=power-bi)
 
 ---
 
