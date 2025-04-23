@@ -1,53 +1,109 @@
-# **StackPipeline: End-to-End Stack Exchange Analytics**  
+# 📦 Stack Exchange Data Warehouse & Analytics
 
-## **Overview**  
-StackPipeline is an **end-to-end data engineering project** that extracts, processes, and analyzes Stack Exchange data using **Apache Spark, HDFS, and a Data Warehouse (DWH)** before visualizing insights in **Power BI**. The project demonstrates efficient **data processing, storage, and analytics** for large-scale datasets.
+A modern and scalable data pipeline to ingest, process, and analyze large-scale XML datasets from Stack Exchange, built with distributed tools and best practices in data engineering.
 
-## **Data Source**  
-The dataset is sourced from the **Stack Exchange Data Dump (Sept 2023)**, which consists of **XML files** containing structured Q&A data.  
-📂 **Download Link:** [Stack Exchange Data Dump](https://archive.org/download/stack-exchange-data-dump-2023-09-12/stats.stackexchange.com.7z)
+---
 
-## **Data Processing & Storage**  
-The pipeline follows structured data processing steps:  
-- **Extraction:** Parse XML files using Python (`lxml`, `ElementTree`).  
-- **Transformation:** Clean, normalize, and process data with **Apache Spark** for large-scale computation.  
-- **Storage:** Load transformed data into **HDFS** and structure it into a **Data Warehouse (DWH)**.
+## 📊 Overview
 
-## **Pipeline Architecture**  
-- **Raw Data (XML) → Spark Processing → HDFS Storage → Data Warehouse → Power BI Analytics**
+This project implements an **end-to-end data lakehouse** following the **Bronze → Silver → Gold → Platinum** medallion architecture and culminates in interactive Power BI dashboards.
 
-  ![Pipeline Architecture](https://your-image-link.com/architecture.png)  
+---
 
-## **Technology Stack**  
-- **Data Extraction:** Python (`lxml`, `ElementTree`, `pandas`)  
-- **Processing & Storage:** Apache Spark, HDFS  
-- **Data Warehouse:** Azure Synapse / Snowflake / PostgreSQL  
-- **Visualization:** Power BI  
+## 🔁 Data Pipeline Architecture
 
-## **Setup & Execution**  
-### **Prerequisites**  
-- Install **Docker** (for containerization)  
-- Install **Apache Spark**  
-- Install **Hadoop (HDFS)**  
-- Set up a **PostgreSQL/Snowflake/Azure Synapse** DWH  
-- Install **Power BI** for visualization  
+![Medallion Architecture](data-pipeline.png)
+
+> **Layers**  
+> 🔸 Bronze → raw XML data in HDFS  
+> 🔹 Silver → cleansed Parquet via Spark  
+> 🏅 Gold → dimensional tables in PostgreSQL  
+> 💎 Platinum → domain‑specific data marts  
+> 📊 Analysis → Power BI dashboards
+
+---
+
+## 🧪 Exploratory Data Analysis
+
+![EDA](DataModel/schema_diagrams/eda.png)
+
+- Performed EDA on raw XML datasets using **Python**, **Pandas**, and **Seaborn**  
+- Identified data quality issues, distributions, and key patterns  
+- Generated visualizations to inform schema design
+
+---
+
+## 🏗️ Dimensional Modeling
+
+![Dimensional Modeling](Dimensional-Model/full-model.JPG)
+
+- Designed **star schemas** for core business processes:   
+- Defined primary/foreign keys, hierarchies, and grain  
+- Documented mapping from XML elements to warehouse tables
+
+---
+
+## 🚚 ETL (Bronze → Silver → Gold)
+
+1. **Ingestion (Bronze)**  
+   - Load raw XML into Hadoop HDFS  
+2. **Transformation (Silver)**  
+   - Clean & normalize with Apache Spark  
+   - Output Parquet files for performance  
+3. **Loading (Gold)**  
+   - Push dimensions & facts into PostgreSQL  
+
+---
+
+## 🏛️ Data Warehouse (Gold Layer)
+
+- **Fact tables**  
+- **Dimension tables** 
+- **Indexes & partitions** for query speed  
+---
+
+## 💎 Data Marts (Platinum Layer)
+
+- **User Activity Mart**  
+- **Tag Trends Mart**  
+- **Engagement Mart**  
+
+Each mart is built as a set of SQL views over the warehouse tables, optimized for its domain.
+
+---
+
+## 📊 Dashboard (Analysis Layer)
+
+![Dashboard Overview](Insights/Site-OverView.JPG)
+![User Stats](Insights/User-Stats-1.JPG)
+![Tech Trends](Insights/Tech-Trends.JPG)
 
 
-## **Performance Optimization**  
-- **Storage Efficiency:** Data stored in optimized **columnar formats** for fast retrieval.  
-- **Parallel Processing:** Apache Spark enables **distributed** data transformations.  
-- **Query Optimization:** Data Warehouse schema designed for efficient analytics.  
 
-## **Key Deliverables**  
-✅ Structured and cleaned Stack Exchange dataset  
-✅ Scalable data pipeline using Spark & HDFS  
-✅ Data Warehouse schema optimized for analytics  
-✅ Power BI dashboards for visualization  
+Key visuals include:
+- **Active Users** over time  
+- **Top Tags** and **Post Volume**  
+- **User Contribution** vs. **Acceptance Rate**
 
-## **Future Enhancements**  
-- 🚀 **Automate ETL** using **Apache Airflow**  
-- 🔄 **Enable real-time processing** with **Kafka**  
-- 🌐 **Deploy Power BI dashboards** as interactive web applications  
+Explore the full `.pbix` in [`Insights`](Insights).
+The kub if the publish[Power BI Puplish](https://app.powerbi.com/groups/me/reports/f3e1e1c6-580c-4a27-b699-e31e4db28a55/05a4b39b2712cab9a9f4?experience=power-bi)
+
+---
+
+## ⚙️ Technologies Used
+
+| Purpose              | Tools                        |
+|----------------------|------------------------------|
+| Ingestion & EDA      | Python, Pandas, Seaborn      |
+| Storage              | Hadoop HDFS                  |
+| Processing           | Apache Spark                 |
+| Data Warehouse       | PostgreSQL                   |
+| Data Marts           | SQL Views                    |
+| Visualization        | Power BI                     |
+| Containerization     | Docker                       |
+
+
+
 
 
 
